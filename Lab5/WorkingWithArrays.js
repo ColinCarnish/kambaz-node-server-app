@@ -31,10 +31,13 @@ let todos = [
     });
     app.get("/lab5/todos/:id/delete", (req, res) => {
       const { id } = req.params;
-      const todoIndex = todos.findIndex((t) => t.id === parseInt(id));
-      if (todoIndex !== -1) {
-        todos.splice(todoIndex, 1);
-      }
+      const todoIndex = todos.findIndex(t => t.id === parseInt(id));
+        if (todoIndex !== -1) {
+          todos.splice(todoIndex, 1);
+          res.json(todos);
+        } else {
+          res.status(404).json({ message: "Todo not found" });
+        }
       res.json(todos);
     });  
     app.get("/lab5/todos/:id/title/:title", (req, res) => {
