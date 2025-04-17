@@ -2,6 +2,8 @@ import { v4 as uuidv4 } from "uuid";
 
 let assignments = [];
 
+export const findUsersByRole = (role) => model.find({ role: role })
+
 export const createAssignment = (assignment) => {
   const newAssignment = { ...assignment, _id: uuidv4() };
   assignments.push(newAssignment);
